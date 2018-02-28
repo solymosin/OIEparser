@@ -1,7 +1,3 @@
 # OIEparser
 
-Install OIEparser from github
-
-library(devtools)
-
-devtools::install_github('solymosin/OIEparser')
+an R package to create SQLite database from the OIE reports
