@@ -1,28 +1,20 @@
 \name{OIEparser}
 \alias{OIEparser}
 \title{
-Create database from OIE reports.
+OIE report parser function
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+This function downloads the OIE pdf reports and parses the mostly used data for epidemiology studies.
 }
 \usage{
 OIEparser(ystart, yend, timeout = 10000, dbfile)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{ystart}{
-%%     ~~Describe \code{ystart} here~~
-}
-  \item{yend}{
-%%     ~~Describe \code{yend} here~~
-}
-  \item{timeout}{
-%%     ~~Describe \code{timeout} here~~
-}
-  \item{dbfile}{
-%%     ~~Describe \code{dbfile} here~~
-}
+  \item{ystart}{the starting year of the query}
+  \item{yend}{the ending year of the query}
+  \item{timeout}{internet connection timeout in ms}
+  \item{dbfile}{the name of the target SQLite database}
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
