@@ -5,7 +5,7 @@ Version: 0.1
 Date: 2018-02-28
 Author: Norbert Solymosi, Katalin Maria Horvath
 Maintainer: Norbert Solymosi <solymosi.norbert@gmail.com>
-Depends: R (>= 3.4.3), curl, pdftools, plotKML, progress, rgdal, RSQLite, sp, stringr
+Depends: R (>= 3.4.1), curl, pdftools, plotKML, progress, rgdal, RSQLite, sp, stringr
 Description: Creates SQLite database from the OIE reports.
 License: GPL-3
 
