@@ -12,13 +12,12 @@ function(ystart, yend){
             htm = rawToChar(r$content)
             htm = strsplit(htm, '\n')[[1]]
             htms = c(htms, htm[which(grepl('reports/en_', htm))])    
-#             print(paste(y, m, sep='/'))
             pb$tick()
             Sys.sleep(1/no)
         }
     }
     links = substr(htms, 46, 136-22)
-    pdfs = paste('en_', matrix(unlist(strsplit(links, 'en_')), nc=2, byrow=T)[,2], sep='')
+    pdfs = paste('en_', matrix(unlist(strsplit(links, 'en_')), ncol=2, byrow=T)[,2], sep='')
     pdfs[which(substr(pdfs,37-3,37)!='.pdf')] = paste(pdfs[which(substr(pdfs,37-3,37)!='.pdf')], 'pdf', sep='')
     urls = paste('http://www.oie.int/wahis_2/temp/reports/', pdfs, sep='')
     return(urls)

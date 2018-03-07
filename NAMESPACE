@@ -7,3 +7,4 @@ import(curl)
 import(stringr)
 import(progress)
 import(RSQLite)
+
