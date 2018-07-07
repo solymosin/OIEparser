@@ -43,6 +43,6 @@ OIEparser(ystart, yend, timeout = 10000, dbfile)
 }
 \examples{
 \dontrun{
-OIEparser(ystart=2017, yend=2017, timeout=10000, dbfile='OIEdb.sqlite')
+OIEparser(ystart=2018, yend=2018, timeout=10000, dbfile='OIEdb.sqlite')
 }
 }
