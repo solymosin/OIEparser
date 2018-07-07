@@ -154,7 +154,7 @@ for(u in report.lst){
         }
         
         if(length(tab.lst)>0){
-          head.dat = rbind(head.dat, data.frame(agent=tmp.agent, disease=tmp.disease, url=urls[ku], kid=ku))        
+          head.dat = rbind(head.dat, data.frame(agent=tmp.agent, disease=tmp.disease, url=urls[ku], rptid=ku))        
           for(i in 1:length(tab.lst)){
             if(dim(tab.lst[[i]])[2]>10){
               rtab = tab.lst[[i]]  
@@ -291,13 +291,13 @@ db = dbConnect(RSQLite::SQLite(), dbfile)
 head.dat = head.dat[-1,]
 head.dat$kid = as.integer(head.dat$kid)
 
-dbWriteTable(db, 'tmphead', head.dat, append=TRUE)
+dbWriteTable(db, 'header', head.dat, append=TRUE)
 
 for(q in 1:length(all.tab.lst)){
 
   rpt = all.tab.lst[[q]]  
 
-  tmdat = data.frame(col1=NA, lat=NA, lon=NA, s.date=NA, e.date=NA)
+  tmdat = data.frame(col1=NA, lat=NA, lon=NA, sdate=NA, edate=NA)
 
   for(tab in rpt){ 
     sdate = edate = lati = loni = 0
@@ -312,7 +312,7 @@ for(q in 1:length(all.tab.lst)){
         loni = j                
     }
     if(lati!=0){
-      tmdat = rbind(tmdat, data.frame(col1=tab[,1], lat=tab[,lati], lon=tab[,loni], s.date=tab[,sdate], e.date=tab[,edate]))
+      tmdat = rbind(tmdat, data.frame(col1=tab[,1], lat=tab[,lati], lon=tab[,loni], sdate=tab[,sdate], edate=tab[,edate]))
     }
   }
     
@@ -344,9 +344,9 @@ for(q in 1:length(all.tab.lst)){
             fajok = c(fajok, faj)
         }
 
-        res.tab = data.frame(species=fajok, lat=str_trim(tmdat[nid,'lat']), lon=str_trim(tmdat[nid,'lon']), s.date=str_trim(tmdat[nid,'s.date']), e.date=str_trim(tmdat[nid,'e.date']), rptid=as.integer(kus[q]))
+        res.tab = data.frame(species=fajok, lat=str_trim(tmdat[nid,'lat']), lon=str_trim(tmdat[nid,'lon']), sdate=str_trim(tmdat[nid,'sdate']), edate=str_trim(tmdat[nid,'edate']), rptid=as.integer(kus[q]))
   
-        dbWriteTable(db, 'tmpobrk', res.tab, append=TRUE)
+        dbWriteTable(db, 'outbreaks', res.tab, append=TRUE)
         }
   }
   
