@@ -354,6 +354,9 @@ for(q in 1:length(all.tab.lst)){
   Sys.sleep(1/no)
     
 }
+run = dbExecute(db, "update outbreaks set sdate=substr(sdate,7,4) || '-' || substr(sdate,4,2) || '-' || substr(sdate,1,2)")
+run = dbExecute(db, "update outbreaks set edate=substr(edate,7,4) || '-' || substr(edate,4,2) || '-' || substr(edate,1,2)")
+
 dbDisconnect(db)
 }
 
