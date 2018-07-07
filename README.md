@@ -76,7 +76,7 @@ plot(sptab)
 ```
 
 
-![png](../man/figs/output_8_0.png)
+![png](https://github.com/solymosin/OIEparser/blob/master/man/figs/output_8_0.png)
 
 
 
@@ -94,7 +94,7 @@ tm_style_grey()
 
 
 
-![png](../man/figs/output_9_1.png)
+![png](https://github.com/solymosin/OIEparser/blob/master/man/figs/output_9_1.png)
 
 
 
@@ -113,5 +113,5 @@ tm_style_grey()
 
 
 
-![png](../man/figs/output_10_1.png)
+![png](https://github.com/solymosin/OIEparser/blob/master/man/figs/output_10_1.png)
 
