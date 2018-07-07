@@ -289,7 +289,7 @@ pb = progress_bar$new(total=no)
 
 db = dbConnect(RSQLite::SQLite(), dbfile)
 head.dat = head.dat[-1,]
-head.dat$kid = as.integer(head.dat$kid)
+head.dat$rptid = as.integer(head.dat$rptid)
 
 dbWriteTable(db, 'header', head.dat, append=TRUE)
 
