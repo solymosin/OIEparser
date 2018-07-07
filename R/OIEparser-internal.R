@@ -58,7 +58,7 @@ stop.kodb = 'Epidemiology'
 
 all.tab.lst = list()
 
-head.dat = data.frame(agent=NA, disease=NA, url=NA, kid=NA)
+head.dat = data.frame(agent=NA, disease=NA, url=NA, rptid=NA)
 kus = c()
 
 no = length(report.lst)
