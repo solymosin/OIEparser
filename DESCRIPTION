@@ -1,8 +1,8 @@
 Package: OIEparser
 Type: Package
 Title: Creates SQLite database from the OIE reports
-Version: 0.1
-Date: 2018-02-28
+Version: 0.2.0
+Date: 2018-07-07
 Author: Norbert Solymosi, Katalin Maria Horvath
 Maintainer: Norbert Solymosi <solymosi.norbert@gmail.com>
 Depends: R (>= 3.4.1), curl, pdftools, progress, RSQLite, stringr
