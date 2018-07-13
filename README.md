@@ -75,9 +75,7 @@ plot(sptab)
 
 ```
 
-
 ![png](https://github.com/solymosin/OIEparser/blob/master/man/figs/output_8_0.png)
-
 
 
 ```R
@@ -91,11 +89,7 @@ tm_format_Europe() +
 tm_style_grey()
 ```
 
-
-
-
 ![png](https://github.com/solymosin/OIEparser/blob/master/man/figs/output_9_1.png)
-
 
 
 ```R
@@ -110,8 +104,40 @@ tm_style_grey()
 
 ```
 
-
-
-
 ![png](https://github.com/solymosin/OIEparser/blob/master/man/figs/output_10_1.png)
 
+
+### Export as ESRI Shape file
+
+
+```R
+library(rgdal)
+
+writeOGR(obj=sptab, layer='ASF', driver='ESRI Shapefile', dsn='ASF_folder')
+
+```
+
+#### Opening in QGIS 
+
+![QGIS](https://github.com/solymosin/OIEparser/blob/master/man/figs/QGIS.png)
+
+### Export as KML
+
+
+```R
+library(plotKML)
+
+pnt = 'http://plotkml.r-forge.r-project.org/circle.png'
+
+kml(sptab, folder.name='ASF', file.name='ASF.kml', 
+    subfolder.name='outbreaks', shape=pnt, size=1, 
+    kmz=T, colour='red', 
+    TimeSpan.begin=sptab$sdate, TimeSpan.end=sptab$edate, 
+    points_names=paste(sptab$sdate, sptab$edate,  sep=' - '), 
+    html.table=sptab$url)
+
+```
+
+#### Opening in Google Earth 
+
+![Google Earth](https://github.com/solymosin/OIEparser/blob/master/man/figs/GoogleEarth.png)
