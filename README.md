@@ -68,8 +68,8 @@ head(tab)
 ```R
 library(sp)
 
-m = cbind(x=as.numeric(tab$lon), y=as.numeric(tab$lat))
-sptab = SpatialPoints(m, proj4string=CRS('+init=epsg:4326'))
+pts = cbind(x=as.numeric(tab$lon), y=as.numeric(tab$lat))
+sptab = SpatialPointsDataFrame(pts, tab, proj4string=CRS('+init=epsg:4326'))
 
 plot(sptab)
 
