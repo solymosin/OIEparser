@@ -67,40 +67,41 @@ head(tab)
 
 ```R
 library(sp)
+library(sf)
 
 pts = cbind(x=as.numeric(tab$lon), y=as.numeric(tab$lat))
 sptab = SpatialPointsDataFrame(pts, tab, proj4string=CRS('+init=epsg:4326'))
+sftab = as(sptab, 'sf')
 
-plot(sptab)
+
+library(tmap)
+
+tm_shape(sftab) + tm_dots(col='red', size=0.1)
 
 ```
 
-![png](https://github.com/solymosin/OIEparser/blob/master/man/figs/output_8_0.png)
+![png](https://github.com/solymosin/OIEparser/blob/master/man/figs/output_8_1.png)
 
 
 ```R
-library(tmap)
+data(World)
 
-data(Europe)
+wrld = st_transform(World, 4326)
 
-tm_shape(Europe) + tm_polygons() + 
-tm_shape(sptab) + tm_dots(col='yellow', size=0.1) +
-tm_format_Europe() +
-tm_style_grey()
+tm_shape(wrld) + tm_polygons() + 
+tm_shape(sftab) + tm_dots(col='yellow', size=0.1) +
+tm_style('grey')
 ```
 
 ![png](https://github.com/solymosin/OIEparser/blob/master/man/figs/output_9_1.png)
 
 
 ```R
-eu = spTransform(Europe, CRS('+init=epsg:4326'))
-
-tm_shape(eu, bbox=bbox(sptab)) + tm_polygons() + 
-tm_shape(sptab) + tm_dots(col='yellow', size=0.1) +
+tm_shape(wrld, bbox=st_bbox(sftab)) + tm_polygons() + 
+tm_shape(sftab) + tm_dots(col='yellow', size=0.1) +
 tm_compass(color.light='grey90', size=2, fontsize=1, type='rose', position=c('left', 'top')) +
-tm_scale_bar(size=0.6, position=c('right', 'top')) + 
-tm_format_Europe() +
-tm_style_grey() 
+tm_scale_bar(size=0.6, position=c('right', 'top'))+
+tm_style('grey')
 
 ```
 
@@ -111,11 +112,15 @@ tm_style_grey()
 
 
 ```R
-library(rgdal)
 
-writeOGR(obj=sptab, layer='ASF', driver='ESRI Shapefile', dsn='ASF_folder')
+st_write(sftab, 'ASF.shp')
 
 ```
+
+    Writing layer `ASF' to data source `ASF.shp' using driver `ESRI Shapefile'
+    features:       8812
+    fields:         10
+    geometry type:  Point
 
 #### Opening in QGIS 
 
